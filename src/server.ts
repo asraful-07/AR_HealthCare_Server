@@ -5,11 +5,13 @@
 import type { Server } from "http";
 import app from "./app.js";
 
+const PORT = process.env.PORT;
+
 function bootstrap() {
   let server: Server | null = null;
   try {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    server = app.listen(5001, () => {
+    server = app.listen(PORT, () => {
       console.log("Server is running on http://localhost:5001");
     });
   } catch (error) {
