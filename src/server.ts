@@ -1,23 +1,15 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable no-console */
-import type { Server } from "http";
-import app from "./app.js";
+import app from "./app";
 
 const PORT = process.env.PORT;
 
-function bootstrap() {
-  let server: Server | null = null;
+const bootstrap = () => {
   try {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    server = app.listen(PORT, () => {
-      console.log("Server is running on http://localhost:5001");
+    app.listen(PORT, () => {
+      console.log(`Server is running on http://localhost:${PORT}`);
     });
   } catch (error) {
-    console.error("Failed to start the server:", error);
+    console.error("Failed to start server:", error);
   }
-}
+};
 
-// bootstrap();
 bootstrap();
